@@ -1,0 +1,396 @@
+/* Importando a fonte do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap');
+
+/* Reset básico e configurações globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* Fonte padrão para textos comuns */
+    background-color: #FFF0F5; /* Um tom de rosa bem clarinho (LavenderBlush) */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive; /* A fonte grande e graciosa */
+    font-size: 4rem; /* Tamanho grande */
+    color: #E83E8C; /* Cor rosa mais forte para o título */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Espaço entre as caixas */
+    width: 100%;
+    max-width: 600px;
+}
+
+.card {
+    background-color: #FFFFFF; /* Fundo branco para as caixas */
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    font-family: 'Pacifico', cursive;
+    color: #E83E8C;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilo do Cardápio */
+#menu-doces ul {
+    list-style: none;
+}
+
+#menu-doces li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    padding: 12px 0;
+    border-bottom: 1px dashed #f0d9e5;
+}
+
+#menu-doces li:last-child {
+    border-bottom: none;
+}
+
+#menu-doces span {
+    font-weight: bold;
+    color: #555;
+}
+
+/* Ícone de Delivery */
+#delivery-icon {
+    
+    bottom: 20px; /* Alinha a 20px do fundo da tela */
+    left: 20px; /* Alinha a 20px da esquerda da tela */
+    width: 30px;
+    height: 30px;
+    background-color: #E83E8C;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+}
+
+#delivery-icon img {
+    width: 200%;
+    height: auto;
+}
+
+/* --- ESTILOS DA GALERIA DE IMAGENS (SLIDER) --- */
+.slider-container {
+    width: 100%;
+    max-width: 95vw;
+    margin: 0 auto 30px auto;
+    overflow: hidden;
+    position: relative;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.slider-track {
+    display: flex;
+    animation: scroll 90s linear infinite;
+    gap: 15px;
+    width: fit-content;
+}
+
+.slider-container:hover .slider-track {
+    animation-play-state: paused;
+}
+
+.slider-track img {
+    height: 220px;
+    width: auto;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-50% - 28 * 15px / 2)); }
+}
+
+
+/* ===== NOVOS ESTILOS PARA O CHAT SIMULADO ===== */
+#chat-container {
+    border: 2px solid #f0d9e5;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    overflow: hidden;
+}
+
+#chat-messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.chat-message {
+    padding: 10px 15px;
+    border-radius: 18px;
+    max-width: 75%;
+    line-height: 1.4;
+}
+
+.chat-message.bot {
+    background-color: #f1f0f0;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+
+.chat-message.user {
+    background-color: #ffe0f0;
+    color: #333;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+#chat-input-container {
+    display: flex;
+    border-top: 2px solid #f0d9e5;
+    padding: 10px;
+    width: 100%; /* Garante que o container ocupe toda a largura disponível */
+}
+
+#user-input {
+    flex-grow: 1; /* Permite que o input preencha o espaço disponível */
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: transparent;
+    min-width: 0; /* Permite que o input encolha em telas pequenas */
+}
+
+#user-input:focus {
+    outline: none;
+}
+
+#send-btn {
+    background-color: #E83E8C;
+    color: white;
+    border: none;
+    padding: 0 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0; /* Previne que o botão encolha */
+}
+
+#send-btn:hover {
+    background-color: #c43275;
+}
+
+#quick-replies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 10px 10px 10px;
+    border-top: 1px solid #f0d9e5;
+}
+
+.quick-reply-btn {
+    background-color: #fff;
+    border: 1px solid #E83E8C;
+    color: #E83E8C;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.quick-reply-btn:hover {
+    background-color: #E83E8C;
+    color: #fff;
+}
+
+#confirm-order-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #25D366; /* Cor do WhatsApp */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#confirm-order-btn:hover {
+    background-color: #1EBE57;
+}
+
+#confirm-order-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Classe para esconder/mostrar elementos */
+.hidden {
+    display: none !important;
+}
+
+/* Estilos para a nova seção de informações do desenvolvedor */
+#developer-info {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fce4ec; /* Um tom de rosa mais suave */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+#developer-info p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.developer-btn {
+    display: inline-block;
+    background-color: #E83E8C;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.developer-btn:hover {
+    background-color: #c43275;
+    transform: translateY(-2px);
+}
+
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .card h2 {
+        font-size: 2rem;
+    }
+
+    #menu-doces li {
+        font-size: 1rem;
+    }
+
+    .slider-track img {
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    body {
+        padding: 10px;
+    }
+
+    main {
+        gap: 20px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .card h2 {
+        font-size: 1.8rem;
+    }
+
+    #menu-doces li {
+        font-size: 0.9rem;
+        padding: 10px 0;
+    }
+
+    #delivery-icon {
+        width: 60px;
+        height: 60px;
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .slider-track img {
+        height: 150px;
+    }
+
+    #chat-messages {
+        padding: 15px;
+    }
+
+    .chat-message {
+        font-size: 0.9rem;
+    }
+
+    #user-input {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    #send-btn {
+        padding: 0 15px;
+    }
+
+    .quick-reply-btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+
+    #confirm-order-btn {
+        padding: 12px;
+        font-size: 1rem;
+    }
+
+    #developer-info p {
+        font-size: 1rem;
+    }
+
+    .developer-btn {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+}
